@@ -7,12 +7,14 @@ module Rake
 
     # Remove Rake 12
     def last_comment # :nodoc:
+      caller_locations(1, 1).first.tap{|loc| puts "#{loc.path}:#{loc.lineno}:#{str}"}
       warn "[DEPRECATION] `last_comment` is deprecated.  Please use `last_description` instead."
       @last_description
     end
 
     # Remove Rake 12
     def last_comment=(comment) # :nodoc:
+      caller_locations(1, 1).first.tap{|loc| puts "#{loc.path}:#{loc.lineno}:#{str}"}
       warn "[DEPRECATION] `last_comment=` is deprecated.  Please use `last_description=` instead."
       @last_description = comment
       @last_description # ignore warning
